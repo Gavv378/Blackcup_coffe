@@ -1,0 +1,504 @@
+/* Palet Warna Tema Nav Bar (Kontras Tinggi & Elegan) */
+:root {
+  --bg-main: #f4efe9;          /* Warm Cream - lembut & bersih untuk mata */
+  --bg-espresso: #181210;      /* Hitam Kopi Pekat - Navbar & Aksen Utama */
+  --bg-roast: #261c19;         /* Cokelat Espresso Gelap - Card & Modal */
+  --accent-gold: #c88a55;      /* Caramel / Crema Gold - Tombol & Sorotan */
+  --accent-gold-hover: #b07340;
+  --text-light: #f8f5f2;       /* Putih Gading - Teks di atas latar gelap */
+  --text-dark: #1f1714;        /* Hitam Kecokelatan - Teks di atas latar krem */
+  --text-muted-light: #cfc5bd;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  margin: 0;
+  padding-top: 72px;
+}
+
+/* 1. NAVBAR */
+.custom-navbar {
+  background-color: var(--bg-espresso);
+  border-bottom: 2px solid var(--accent-gold);
+  padding: 12px 0;
+  z-index: 1030;
+}
+
+.custom-navbar .navbar-brand {
+  color: var(--accent-gold);
+  font-size: 1.35rem;
+  letter-spacing: 0.5px;
+}
+
+.navbar-label-tag {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-light);
+  background-color: rgba(200, 138, 85, 0.18);
+  border: 1px solid rgba(200, 138, 85, 0.5);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.custom-navbar .nav-link {
+  color: var(--text-light);
+  font-weight: 500;
+  margin-right: 6px;
+  transition: color 0.2s ease;
+}
+
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-link.active {
+  color: var(--accent-gold);
+}
+
+.custom-navbar .nav-link.disabled {
+  color: #6c635f !important;
+  cursor: not-allowed;
+}
+
+/* Dropdown Menu */
+.custom-dropdown {
+  background-color: var(--bg-roast);
+  border: 1px solid var(--accent-gold);
+}
+
+.custom-dropdown .dropdown-item {
+  color: var(--text-light);
+  transition: background-color 0.2s ease;
+}
+
+.custom-dropdown .dropdown-item:hover {
+  background-color: var(--accent-gold);
+  color: var(--bg-espresso);
+  font-weight: 600;
+}
+
+.custom-dropdown .dropdown-divider {
+  border-color: rgba(200, 138, 85, 0.3);
+}
+
+/* Search Input & Tombol */
+.custom-search-input {
+  background-color: #2b211e;
+  border: 1px solid #4d3c36;
+  color: var(--text-light);
+}
+
+.custom-search-input::placeholder {
+  color: #a39690;
+}
+
+.custom-search-input:focus {
+  background-color: #2b211e;
+  color: var(--text-light);
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 0.2rem rgba(200, 138, 85, 0.25);
+}
+
+.btn-gold {
+  background-color: var(--accent-gold);
+  color: var(--bg-espresso);
+  font-weight: 600;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-gold:hover {
+  background-color: var(--accent-gold-hover);
+  color: #ffffff;
+}
+
+.btn-gold-outline {
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-gold-outline:hover {
+  background-color: var(--accent-gold);
+  color: var(--bg-espresso);
+}
+
+/* 2. HERO BANNER CAROUSEL (Tanpa Gambar Otomatis) */
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  background-color: var(--bg-roast);
+  border-bottom: 2px solid rgba(200, 138, 85, 0.35);
+}
+
+/* Gambar slide: latar buram + foto utuh di kanan */
+.hero-banner {
+  overflow: hidden;
+  padding: 0 15%;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: -30px;
+  width: calc(100% + 60px);
+  height: calc(100% + 60px);
+  object-fit: cover;
+  filter: blur(22px) brightness(0.55);
+}
+
+.hero-img {
+  position: absolute;
+  top: 0;
+  right: 15%;
+  height: 100%;
+  width: auto;
+  max-width: 45%;
+  object-fit: contain;
+  z-index: 1;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.custom-caption {
+  z-index: 2;
+  position: relative;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  text-align: left;
+  max-width: 460px;
+  margin: 0;
+  background: rgba(24, 18, 16, 0.85);
+  border-left: 4px solid var(--accent-gold);
+  border-radius: 8px;
+  padding: 20px 26px;
+}
+
+.custom-caption h5 {
+  color: var(--accent-gold);
+  font-weight: 700;
+}
+
+.custom-caption p {
+  color: var(--text-light);
+  margin-bottom: 0;
+}
+
+/* 3. FEATURED CARD */
+.featured-card {
+  background-color: var(--bg-espresso);
+  color: var(--text-light);
+  border: 1px solid var(--accent-gold);
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(24, 18, 16, 0.15);
+}
+
+.featured-card .card-header,
+.featured-card .card-footer {
+  background-color: var(--bg-roast);
+  color: var(--accent-gold);
+  border-color: rgba(200, 138, 85, 0.25);
+  font-weight: 600;
+}
+
+.featured-card .card-title {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.featured-card .card-text {
+  color: var(--text-muted-light);
+}
+
+/* 4. MENU CARDS (6 Card Tanpa Gambar) */
+.section-heading {
+  color: var(--bg-espresso);
+  font-weight: 700;
+  border-left: 5px solid var(--accent-gold);
+  padding-left: 12px;
+}
+
+.menu-card {
+  background-color: #ffffff;
+  border: 1px solid #dfd5cc;
+  border-top: 4px solid var(--bg-espresso);
+  border-radius: 8px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-top-color 0.25s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+  border-top-color: var(--accent-gold);
+  box-shadow: 0 10px 24px rgba(24, 18, 16, 0.12);
+}
+
+/* Gambar di atas nama produk pada card */
+.menu-card {
+  overflow: hidden;
+}
+
+.menu-img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.menu-img-kosong {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--bg-roast), var(--bg-espresso));
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.badge-kategori {
+  background-color: var(--bg-espresso);
+  color: var(--accent-gold);
+  font-weight: 600;
+  padding: 5px 10px;
+}
+
+.menu-card .card-title {
+  color: var(--bg-espresso);
+  font-weight: 700;
+}
+
+.menu-card .card-text {
+  color: #4a3f3b;
+  font-size: 0.95rem;
+}
+
+.harga-tag {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--bg-espresso);
+}
+
+/* 5. MODAL & OFFCANVAS */
+.custom-modal {
+  background-color: var(--bg-espresso);
+  color: var(--text-light);
+  border: 1px solid var(--accent-gold);
+}
+
+.custom-input {
+  background-color: var(--bg-roast);
+  border: 1px solid #4d3c36;
+  color: var(--text-light);
+}
+
+.custom-input:focus {
+  background-color: var(--bg-roast);
+  color: var(--text-light);
+  border-color: var(--accent-gold);
+  box-shadow: none;
+}
+
+/* Offset scroll agar judul section tidak tertutup navbar fixed */
+html {
+  scroll-behavior: smooth;
+}
+
+.section-anchor {
+  scroll-margin-top: 80px;
+}
+
+.custom-navbar .dropdown-toggle {
+  color: var(--text-light);
+}
+
+.custom-navbar .dropdown-toggle:focus-visible {
+  outline: 2px solid var(--accent-gold);
+}
+
+.custom-dropdown .dropdown-item:focus,
+.custom-dropdown .dropdown-item:active {
+  background-color: var(--accent-gold);
+  color: var(--bg-espresso);
+}
+
+/* 6. TABEL DAFTAR HARGA */
+.tabel-wrapper {
+  background-color: #ffffff;
+  border: 1px solid #dfd5cc;
+  border-top: 4px solid var(--bg-espresso);
+  border-radius: 8px;
+}
+
+.tabel-harga thead th {
+  background-color: var(--bg-espresso);
+  color: var(--accent-gold);
+  font-weight: 600;
+  border-bottom: none;
+  padding: 12px 16px;
+}
+
+.tabel-harga td {
+  padding: 12px 16px;
+  color: var(--text-dark);
+}
+
+.tabel-harga tbody tr:hover td {
+  background-color: #faf4ee;
+}
+
+/* 7. FORM PEMESANAN */
+.form-section-title {
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  border-bottom: 1px solid rgba(200, 138, 85, 0.3);
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+}
+
+.custom-input::placeholder {
+  color: #8f827c;
+}
+
+.custom-input option {
+  background-color: var(--bg-roast);
+  color: var(--text-light);
+}
+
+.form-select.custom-input {
+  --bs-form-select-bg-img: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23c88a55' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+
+input[type="date"].custom-input {
+  color-scheme: dark;
+}
+
+.tabel-order {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--text-light);
+  --bs-table-border-color: rgba(200, 138, 85, 0.25);
+}
+
+.tabel-order thead th {
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+.text-gold {
+  color: var(--accent-gold);
+}
+
+.text-muted-light {
+  color: var(--text-muted-light);
+}
+
+/* Scroll di dalam Form Pemesanan:
+   <form> membungkus modal-body, jadi form dibuat flex agar
+   bagian isi bisa di-scroll dan footer tombol tetap terlihat */
+.form-scroll {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.form-scroll-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-gold) var(--bg-roast);
+}
+
+.form-scroll-body::-webkit-scrollbar {
+  width: 10px;
+}
+
+.form-scroll-body::-webkit-scrollbar-track {
+  background: var(--bg-roast);
+}
+
+.form-scroll-body::-webkit-scrollbar-thumb {
+  background-color: var(--accent-gold);
+  border-radius: 10px;
+  border: 2px solid var(--bg-roast);
+}
+
+/* 8. INVOICE */
+.invoice-paper {
+  background-color: #ffffff;
+  color: var(--text-dark);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.invoice-brand {
+  color: var(--bg-espresso);
+  font-weight: 800;
+  border-left: 5px solid var(--accent-gold);
+  padding-left: 10px;
+}
+
+.invoice-label {
+  color: var(--accent-gold-hover);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.footer-site {
+  background-color: var(--bg-espresso);
+  color: var(--text-muted-light);
+  border-top: 2px solid var(--accent-gold);
+}
+
+/* Saat dicetak, hanya invoice yang tampil */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #invoice-print,
+  #invoice-print * {
+    visibility: visible;
+  }
+
+  #invoice-print {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 66px;
+  }
+
+  .hero-banner {
+    height: 360px;
+    padding: 0 12px 40px;
+    align-items: flex-end !important;
+  }
+
+  .hero-img {
+    right: 50%;
+    transform: translateX(50%);
+    max-width: 80%;
+  }
+
+  .custom-caption {
+    max-width: 100%;
+    padding: 12px 16px;
+    background: rgba(24, 18, 16, 0.82);
+  }
+
+  .custom-caption p {
+    font-size: 0.85rem;
+  }
+}
