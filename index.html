@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nav Bar</title>
+  <!-- Bootstrap 5 CSS (file lokal, tetap jalan tanpa internet) -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- CSS Kustom -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbarUtama" data-bs-offset="90" tabindex="0">
+
+  <!-- 1. NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark custom-navbar fixed-top">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand fw-bold me-4" href="#home">Blackcup Coffee</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarUtama" aria-controls="navbarUtama" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarUtama">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- Home -->
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#home">Home</a>
+          </li>
+          <!-- Link: ke daftar card menu -->
+          <li class="nav-item">
+            <a class="nav-link" href="#menu-kopi">Link</a>
+          </li>
+          <!-- Daftar Harga: ke tabel harga minuman -->
+          <li class="nav-item">
+            <a class="nav-link" href="#daftar-harga">Daftar Harga</a>
+          </li>
+          <!-- Dropdown -->
+          <li class="nav-item dropdown">
+            <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </button>
+            <ul class="dropdown-menu custom-dropdown">
+              <li><a class="dropdown-item" href="#daftar-harga">Daftar Harga Minuman</a></li>
+              <li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#modalTentangKopi" data-topik="Filosofi Kami">Filosofi Kami</button></li>
+              <li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#modalTentangKopi" data-topik="Biji Kopi Nusantara">Biji Kopi Nusantara</button></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#modalRiwayat">Riwayat Invoice</button></li>
+              <li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#modalRequest">Request Lainnya</button></li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- Tombol Pesanan (LocalStorage) & Form Search -->
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2">
+          <button class="btn btn-gold-outline position-relative me-2 align-self-start" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasPesanan">
+            Pesanan
+            <span id="badge-jumlah" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+          </button>
+
+          <form class="d-flex" role="search" id="form-search">
+            <input class="form-control me-2 custom-search-input" type="search" id="input-search" placeholder="Search menu..." aria-label="Search">
+            <button class="btn btn-gold" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 2. HERO BANNER SLIDER -->
+  <section id="home" class="section-anchor">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      </div>
+
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="hero-banner d-flex align-items-center">
+            <img src="image/slide-1.jpg" class="hero-bg" alt="" aria-hidden="true">
+            <img src="image/slide-1.jpg" class="hero-img" alt="Golden Hour Iced Coffee">
+            <div class="carousel-caption d-block custom-caption">
+              <h5>Espresso Extraction — Slide 1</h5>
+              <p>Tekanan presisi dari tuas portafilter untuk menghasilkan krema keemasan yang sempurna.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="hero-banner d-flex align-items-center">
+            <img src="image/slide-2.jpg" class="hero-bg" alt="" aria-hidden="true">
+            <img src="image/slide-2.jpg" class="hero-img" alt="Iced Vanilla Latte">
+            <div class="carousel-caption d-block custom-caption">
+              <h5>Artisan Barista Craft — Slide 2</h5>
+              <p>Setiap cangkir diracik langsung oleh barista berpengalaman dengan standar suhu terbaik.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="hero-banner d-flex align-items-center">
+            <img src="image/slide-3.jpg" class="hero-bg" alt="" aria-hidden="true">
+            <img src="image/slide-3.jpg" class="hero-img" alt="Layered Iced Coffee">
+            <div class="carousel-caption d-block custom-caption">
+              <h5>Dark &amp; Medium House Roast — Slide 3</h5>
+              <p>Biji kopi pilihan yang disangrai setiap minggu untuk menjaga kesegaran aroma.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="hero-banner d-flex align-items-center">
+            <img src="image/slide-4.jpg" class="hero-bg" alt="" aria-hidden="true">
+            <img src="image/slide-4.jpg" class="hero-img" alt="Caramel Iced Coffee">
+            <div class="carousel-caption d-block custom-caption">
+              <h5>Velvety Microfoam — Slide 4</h5>
+              <p>Perpaduan tekstur susu lembut dan karakter espresso pekat khas Nav Bar.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="hero-banner d-flex align-items-center">
+            <img src="image/slide-5.jpg" class="hero-bg" alt="" aria-hidden="true">
+            <img src="image/slide-5.jpg" class="hero-img" alt="Iced Coffee Latte">
+            <div class="carousel-caption d-block custom-caption">
+              <h5>Single Origin Pour Over — Slide 5</h5>
+              <p>Eksplorasi karakter rasa buah, cokelat, dan rempah dari pegunungan Indonesia.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- 3. SECTION FEATURED CARD -->
+  <div class="container my-5">
+    <div class="card text-center featured-card">
+      <div class="card-header">Featured</div>
+      <div class="card-body py-4">
+        <h5 class="card-title fs-3 mb-2">Signature Roast</h5>
+        <p class="card-text mx-auto" style="max-width: 650px;">
+          Nikmati racikan biji kopi pilihan terbaik dengan aroma pekat, body tebal, dan cita rasa elegan yang diseduh khusus untuk menemani aktivitas Anda.
+        </p>
+        <div class="d-flex justify-content-center gap-2 mt-3 flex-wrap">
+          <button type="button" class="btn btn-gold pesan-sekarang" data-nama="Signature Roast" data-harga="26000">
+            Pesan Sekarang
+          </button>
+          <a href="#daftar-harga" class="btn btn-gold-outline">Lihat Daftar Harga</a>
+        </div>
+      </div>
+      <div class="card-footer">2 days ago</div>
+    </div>
+  </div>
+
+  <!-- 4. GRID CARD MENU (12 card) -->
+  <section class="container mb-5 section-anchor" id="menu-kopi">
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+      <h3 class="section-heading m-0">Menu Spesial</h3>
+      <span id="search-status" class="text-muted small">Menampilkan 12 menu</span>
+    </div>
+
+    <div class="row g-4" id="daftar-card">
+
+      <div class="col-md-4 menu-item" data-nama="Paket Hemat Pagi">
+        <div class="card h-100 menu-card">
+          <img src="image/paket-hemat-pagi.jpg" class="card-img-top menu-img" alt="Paket Hemat Pagi" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge badge-kategori align-self-start mb-2">Promo Pagi</span>
+            <h5 class="card-title">Paket Hemat Pagi</h5>
+            <p class="card-text flex-grow-1">Dapatkan harga spesial untuk setiap pembelian Americano atau Es Kopi Susu Gula Aren sebelum jam 10 pagi.</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="harga-tag">Rp 18.000</span>
+              <button class="btn btn-gold btn-sm tambah-pesanan" data-nama="Paket Hemat Pagi" data-harga="18000">Pilih Menu</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 menu-item" data-nama="Creamy Latte">
+        <div class="card h-100 menu-card">
+          <img src="image/creamy-latte.jpg" class="card-img-top menu-img" alt="Creamy Latte" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge badge-kategori align-self-start mb-2">Best Seller</span>
+            <h5 class="card-title">Creamy Latte</h5>
+            <p class="card-text flex-grow-1">Perpaduan espresso house blend dengan susu segar pilihan yang lembut, nikmat disajikan hangat maupun dingin.</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="harga-tag">Rp 25.000</span>
+              <button class="btn btn-gold btn-sm tambah-pesanan" data-nama="Creamy Latte" data-harga="25000">Pilih Menu</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 menu-item" data-nama="Manual Brew V60">
+        <div class="card h-100 menu-card">
+          <img src="image/manual-brew-v60.jpg" class="card-img-top menu-img" alt="Manual Brew V60" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge badge-kategori align-self-start mb-2">Single Origin</span>
+            <h5 class="card-title">Manual Brew V60</h5>
+            <p class="card-text flex-grow-1">Seduhan manual dari biji kopi single origin Nusantara dengan karakter rasa buah dan aroma yang bersih.</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="harga-tag">Rp 28.000</span>
+              <button class="btn btn-gold btn-sm tambah-pesanan" data-nama="Manual Brew V60" data-harga="28000">Pilih Menu</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 menu-item" data-nama="Aren Signature">
+        <div class="card h-100 menu-card">
+          <img src="image/aren-signature.jpg" class="card-img-top menu-img" alt="Aren Signature" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge badge-kategori align-self-start mb-2">Signature</span>
+            <h5 class="card-title">Aren Signature</h5>
+            <p class="card-text flex-grow-1">Kopi susu dengan manis alami gula aren organik dan sentuhan krim lembut di atasnya.</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="harga-tag">Rp 22.000</span>
+              <button class="btn btn-gold btn-sm tambah-pesanan" data-nama="Aren Signature" data-harga="22000">Pilih Menu</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 menu-item" data-nama="Double Shot Espresso">
+        <div class="card h-100 menu-card">
+          <img src="image/double-shot-espresso.jpg" class="card-img-top menu-img" alt="Double Shot Espresso" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge badge-kategori align-self-start mb-2">Classic</span>
+            <h5 class="card-title">Double Shot Espresso</h5>
+            <p class="card-text flex-grow-1">Ekstraksi murni dua takaran biji kopi pilihan dengan krema tebal untuk energi maksimal sepanjang hari.</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="harga-tag">Rp 18.000</span>
+              <button class="btn btn-gold btn-sm tambah-pesanan" data-nama="Double Shot Espresso" data-harga="18000">Pilih Menu</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 menu-item" data-nama="Caramel Macchiato">
+        <div class="card h-100 menu-card">
+          <img src="image/caramel-macchiato.jpg" class="card-img-top menu-img" alt="Caramel Macchiato" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge badge-kategori align-self-start mb-2">Sweet Coffee</span>
+            <h5 class="card-title">Caramel Macchiato</h5>
+            <p class="card-text flex-grow-1">Kombinasi susu steamed, sirup vanila, espresso pekat, dan saus karamel panggang yang harum.</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="harga-tag">Rp 27.000</span>
+              <button class="btn btn-gold btn-sm tambah-pesanan" data-nama="Caramel Macchiato" data-harga="27000">Pilih Menu</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Card tambahan baru ===== -->
+      <div class="col-md-4 menu-item" data-nama="Americano">
+        <div class="card h-100 menu-card">
+          <img src="image/americano.jpg" class="card-img-top menu-img" alt="Americano" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge badge-kategori align-self-start mb-2">Classic</span>
+            <h5 class="card-title">Americano</h5>
+            <p class="card-text flex-grow-1">Double espresso yang dilarutkan dengan air, ringan di lidah namun tetap kaya aroma kopi.</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="harga-tag">Rp 20.000</span>
+              <button class="btn btn-gold btn-sm tambah-pesanan" data-nama="Americano" data-harga="20000">Pilih Menu</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 menu-item" data-nama="Cappuccino">
+        <div class="card h-100 menu-card">
+          <img src="image/cappuccino.jpg" class="card-img-top menu-img" alt="Cappuccino" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge badge-kategori align-self-start mb-2">Milk Coffee</span>
+            <h5 class="card-title">Cappuccino</h5>
+            <p class="card-text flex-grow-1">Espresso dengan susu panas dan lapisan foam tebal, seimbang antara pahit dan creamy.</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="harga-tag">Rp 24.000</span>
+              <button class="btn btn-gold btn-sm tambah-pesanan" data-nama="Cappuccino" data-harga="24000">Pilih Menu</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 menu-item" data-nama="Mocha Latte">
+        <div class="card h-100 menu-card">
+          <img src="image/mocha-latte.jpg" class="card-img-top menu-img" alt="Mocha Latte" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge badge-kategori align-self-start mb-2">Chocolate</span>
+            <h5 class="card-title">Mocha Latte</h5>
+            <p class="card-text flex-grow-1">Paduan espresso, cokelat premium, dan susu segar untuk pecinta rasa manis yang pekat.</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="harga-tag">Rp 27.000</span>
+              <button class="btn btn-gold btn-sm tambah-pesanan" data-nama="Mocha Latte" data-harga="27000">Pilih Menu</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 menu-item" data-nama="Vietnam Drip">
+        <div class="card h-100 menu-card">
+          <img src="image/vietnam-drip.jpg" class="card-img-top menu-img" alt="Vietnam Drip" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge badge-kategori align-self-start mb-2">Traditional</span>
+            <h5 class="card-title">Vietnam Drip</h5>
+            <p class="card-text flex-grow-1">Kopi robusta yang menetes perlahan di atas susu kental manis, kuat dan legit.</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="harga-tag">Rp 20.000</span>
+              <button class="btn btn-gold btn-sm tambah-pesanan" data-nama="Vietnam Drip" data-harga="20000">Pilih Menu</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 menu-item" data-nama="Matcha Latte">
+        <div class="card h-100 menu-card">
+          <img src="image/matcha-latte.jpg" class="card-img-top menu-img" alt="Matcha Latte" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge badge-kategori align-self-start mb-2">Non Coffee</span>
+            <h5 class="card-title">Matcha Latte</h5>
+            <p class="card-text flex-grow-1">Bubuk matcha Jepang dengan susu segar, lembut dengan rasa teh hijau yang khas.</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="harga-tag">Rp 26.000</span>
+              <button class="btn btn-gold btn-sm tambah-pesanan" data-nama="Matcha Latte" data-harga="26000">Pilih Menu</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 menu-item" data-nama="Affogato">
+        <div class="card h-100 menu-card">
+          <img src="image/affogato.jpg" class="card-img-top menu-img" alt="Affogato" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <span class="badge badge-kategori align-self-start mb-2">Dessert</span>
+            <h5 class="card-title">Affogato</h5>
+            <p class="card-text flex-grow-1">Satu scoop es krim vanila yang disiram espresso panas, manis dan pahit dalam satu suapan.</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="harga-tag">Rp 30.000</span>
+              <button class="btn btn-gold btn-sm tambah-pesanan" data-nama="Affogato" data-harga="30000">Pilih Menu</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. TABEL DAFTAR HARGA MINUMAN -->
+  <section class="container mb-5 section-anchor" id="daftar-harga">
+    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+      <h3 class="section-heading m-0">Daftar Harga Minuman</h3>
+      <span class="text-muted small">Klik "Pesan Sekarang" untuk mengisi data pemesanan</span>
+    </div>
+
+    <div class="table-responsive tabel-wrapper">
+      <table class="table align-middle mb-0 tabel-harga">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 60px;">No</th>
+            <th scope="col">Minuman</th>
+            <th scope="col">Harga</th>
+            <th scope="col" class="text-end">Aksi</th>
+          </tr>
+        </thead>
+        <!-- Isi tabel dibuat otomatis dari daftar DAFTAR_MINUMAN di script.js -->
+        <tbody id="tbody-harga"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="footer-site text-center py-4">
+    <small>&copy; 2026 Nav Bar — Coffee &amp; Brew</small>
+  </footer>
+
+  <!-- MODAL: Tentang Kopi (Dari Dropdown) -->
+  <div class="modal fade" id="modalTentangKopi" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content custom-modal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="judulModalKopi">Tentang Nav Bar</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="isiModalKopi">Informasi seputar kopi kami.</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-gold" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Request Lainnya (Tersimpan di LocalStorage) -->
+  <div class="modal fade" id="modalRequest" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content custom-modal">
+        <div class="modal-header">
+          <h5 class="modal-title">Request Menu / Saran Kopi</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="form-request">
+            <div class="mb-3">
+              <label for="nama-pengirim" class="form-label">Nama Anda</label>
+              <input type="text" class="form-control custom-input" id="nama-pengirim" required placeholder="Contoh: Gavriel">
+            </div>
+            <div class="mb-3">
+              <label for="isi-request" class="form-label">Request Kopi / Tingkat Gula / Es</label>
+              <textarea class="form-control custom-input" id="isi-request" rows="3" required placeholder="Tulis request khusus Anda..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-gold w-100">Simpan Request</button>
+          </form>
+          <hr class="my-3">
+          <h6 class="small text-uppercase fw-bold mb-2">Riwayat Request Tersimpan:</h6>
+          <ul id="daftar-request" class="list-group list-group-flush small"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: FORM PEMESANAN (Input Invoice) -->
+  <div class="modal fade" id="modalPesan" tabindex="-1" aria-labelledby="judulModalPesan" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+      <div class="modal-content custom-modal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="judulModalPesan">Form Pemesanan</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="form-pesan" class="form-scroll" novalidate>
+          <div class="modal-body form-scroll-body">
+
+            <!-- A. DATA PEMESANAN -->
+            <h6 class="form-section-title">Data Pemesanan</h6>
+            <div class="table-responsive mb-3">
+              <table class="table table-sm align-middle tabel-order mb-0">
+                <thead>
+                  <tr>
+                    <th>Menu</th>
+                    <th style="min-width: 140px;">Menu Pilihan</th>
+                    <th style="width: 90px;">Jumlah</th>
+                    <th class="text-end">Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody id="order-items"></tbody>
+                <tfoot>
+                  <tr>
+                    <th colspan="3" class="text-end">Total</th>
+                    <th class="text-end" id="order-total">Rp 0</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <div class="row g-3 mb-4">
+              <div class="col-md-6">
+                <label for="order-tanggal" class="form-label">Tanggal Pesan</label>
+                <input type="date" class="form-control custom-input" id="order-tanggal" required>
+                <div class="invalid-feedback">Tanggal wajib diisi.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="order-metode" class="form-label">Jenis Pesanan</label>
+                <select class="form-select custom-input" id="order-metode" required>
+                  <option value="Dine In">Dine In (Makan di tempat)</option>
+                  <option value="Take Away">Take Away (Bawa pulang)</option>
+                  <option value="Delivery">Delivery (Diantar)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- B. DATA PEMBELI -->
+            <h6 class="form-section-title">Data Pembeli</h6>
+            <div class="row g-3 mb-4">
+              <div class="col-md-6">
+                <label for="order-nama" class="form-label">Nama Pembeli</label>
+                <input type="text" class="form-control custom-input" id="order-nama" required minlength="2" placeholder="Masukkan nama pembeli">
+                <div class="invalid-feedback">Nama pembeli wajib diisi.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="order-alamat" class="form-label">Alamat / No. Meja</label>
+                <input type="text" class="form-control custom-input" id="order-alamat" placeholder="Contoh: Meja 5 / Jl. Sam Ratulangi No. 10">
+              </div>
+              <div class="col-12">
+                <label for="order-catatan" class="form-label">Catatan (opsional)</label>
+                <textarea class="form-control custom-input" id="order-catatan" rows="2" placeholder="Contoh: less sugar, tanpa es batu besar"></textarea>
+              </div>
+            </div>
+
+            <!-- C. NOMOR TELEPON CUSTOMER -->
+            <h6 class="form-section-title">Nomor Telepon Customer</h6>
+            <div class="mb-2">
+              <label for="order-telepon" class="form-label">Nomor Telepon / WhatsApp</label>
+              <input type="tel" class="form-control custom-input" id="order-telepon" required
+                     pattern="(\+62|62|0)8[0-9]{7,12}" placeholder="Contoh: 081234567890">
+              <div class="invalid-feedback">Masukkan nomor HP yang valid (diawali 08 atau +62, 10–15 digit).</div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-gold">Buat Invoice</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: INVOICE -->
+  <div class="modal fade" id="modalInvoice" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+      <div class="modal-content custom-modal">
+        <div class="modal-header">
+          <h5 class="modal-title">Invoice Pemesanan</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="invoice-print" class="invoice-paper"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Tutup</button>
+          <button type="button" class="btn btn-gold" id="btn-print-invoice">Cetak Invoice</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: RIWAYAT INVOICE -->
+  <div class="modal fade" id="modalRiwayat" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content custom-modal">
+        <div class="modal-header">
+          <h5 class="modal-title">Riwayat Invoice</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul id="list-riwayat" class="list-group list-group-flush"></ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger me-auto" id="btn-hapus-riwayat">Hapus Riwayat</button>
+          <button type="button" class="btn btn-gold" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OFFCANVAS: Daftar Pesanan Tersimpan (LocalStorage) -->
+  <div class="offcanvas offcanvas-end custom-modal" tabindex="-1" id="offcanvasPesanan">
+    <div class="offcanvas-header border-bottom border-secondary">
+      <h5 class="offcanvas-title">Daftar Pesanan Anda</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+      <ul id="list-pesanan" class="list-group list-group-flush flex-grow-1 mb-3"></ul>
+      <div class="border-top border-secondary pt-3">
+        <div class="d-flex justify-content-between fw-bold fs-5 mb-3">
+          <span>Total:</span>
+          <span id="total-harga">Rp 0</span>
+        </div>
+        <div id="pesan-keranjang" class="small text-warning mb-2 d-none">Silakan pilih menu terlebih dahulu!</div>
+        <button id="btn-hapus-semua" class="btn btn-outline-danger w-100 mb-2">Kosongkan Pesanan</button>
+        <button id="btn-checkout" class="btn btn-gold w-100">Konfirmasi Pesanan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS Bundle (file lokal) -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <!-- JavaScript Kustom & LocalStorage -->
+  <script src="script.js"></script>
+</body>
+</html>
